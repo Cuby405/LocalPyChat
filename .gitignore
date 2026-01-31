@@ -1,14 +1,26 @@
+# =====================
+# Archivos generados
+# =====================
+
 # PyInstaller
 /build/
 /dist/
-*.spec.bak
-
-# Datos locales
-.data/
-
-# Ejecutables
 *.exe
 
+# Datos locales del cliente
+.data/
+
+# =====================
 # Python
+# =====================
 __pycache__/
 *.pyc
+*.pyo
+
+# =====================
+# Sistema / IDE
+# =====================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
