@@ -1,4 +1,0 @@
-user=Cuby405
-pwd_hash=6e80b4ef0982c0161eb6cf24de302b9ddcd02e670d08f31b301c7db3257e7037
-color=#00ff00
-ip=25.29.31.246
