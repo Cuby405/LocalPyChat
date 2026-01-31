@@ -5,6 +5,7 @@ import hashlib
 import tkinter as tk
 from tkinter import simpledialog, scrolledtext, messagebox
 import time
+import sys
 
 APP_VERSION = "1.0.0"
 
@@ -18,6 +19,28 @@ PORT = 23456
 
 def hash_pwd(p):
     return hashlib.sha256(p.encode()).hexdigest()
+
+def resource_path(relative_path):
+    """Devuelve la ruta absoluta para archivos dentro del .exe"""
+    try:
+        base_path = sys._MEIPASS  # carpeta temporal creada por PyInstaller
+    except AttributeError:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
+
+# ejemplo con version.txt
+with open(resource_path("version.txt"), "r") as f:
+    latest_version = f.read().strip()
+
+# ejemplo para updater.py
+import importlib.util
+
+updater_path = resource_path("updater.py")
+spec = importlib.util.spec_from_file_location("updater", updater_path)
+updater = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(updater)
+
+# ahora puedes usar updater.check_update() u otras funciones
 
 # =====================
 # TK INIT
