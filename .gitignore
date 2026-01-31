@@ -1,0 +1,15 @@
+# Configuración local
+.data/
+
+# Builds / ejecutables
+dist/
+build/
+*.exe
+
+# Python
+__pycache__/
+*.pyc
+
+# IDEs
+.vscode/
+.idea/
