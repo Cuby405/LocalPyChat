@@ -1,15 +1,14 @@
-# Configuración local
+# PyInstaller
+/build/
+/dist/
+*.spec.bak
+
+# Datos locales
 .data/
 
-# Builds / ejecutables
-dist/
-build/
+# Ejecutables
 *.exe
 
 # Python
 __pycache__/
 *.pyc
-
-# IDEs
-.vscode/
-.idea/
