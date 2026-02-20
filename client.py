@@ -122,12 +122,24 @@ with open(CONFIG_FILE, "w") as f:
 sock = None
 user_colors = {}
 
+loading_history = True
+
+
+def finish_loading_history():
+    global loading_history
+    loading_history = False
+
 def connect_to_server():
-    global sock
+    global sock, loading_history
     try:
+        loading_history = True
         sock = socket.socket()
         sock.connect((SERVER_IP, PORT))
         sock.send(f"__LOGIN__:{USER}|{PWD_HASH}|{COLOR}".encode())
+
+        # Esperar un pequeño momento para que cargue el historial
+        root.after(1000, finish_loading_history)
+
     except Exception as e:
         messagebox.showerror("Error", f"No se pudo conectar:\n{e}")
 
@@ -389,8 +401,15 @@ def toggle_notifications():
     messagebox.showinfo("Notificaciones", f"Notificaciones {status}")
 
 def notify(chat, user, msg):
-    if not notifications_enabled or user == USER:
+    if loading_history:
         return
+
+    if not notifications_enabled:
+        return
+
+    if user == USER:
+        return
+
     try:
         from plyer import notification
         notification.notify(
