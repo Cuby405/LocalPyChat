@@ -1,7 +1,3 @@
-# =====================
-# Archivos generados / binarios
-# =====================
-
 # PyInstaller
 /build/
 /dist/
@@ -10,17 +6,18 @@
 # Datos locales del cliente
 .data/
 
-# =====================
 # Python
-# =====================
+
 __pycache__/
 *.pyc
 *.pyo
 
-# =====================
 # Sistema / IDE
-# =====================
 .DS_Store
 Thumbs.db
 .vscode/
 .idea/
+
+# Herramientas GIT
+push.bat
+pull.bat
